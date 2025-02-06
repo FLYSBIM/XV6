@@ -48,7 +48,10 @@ struct proc {
   int killed;                  // If non-zero, have been killed
   struct file *ofile[NOFILE];  // Open files
   struct inode *cwd;           // Current directory
-  char name[16];               // Process name (debugging)
+  char name[16];	       // Process name (debugging)
+  int priority; // Multi Level Feedback Queue 
+  int last_exec_tick; // Multi Level Feedback Queue
+  int time_slice; // Multi Level Feedback Queue
 };
 
 // Process memory is laid out contiguously, low addresses first:
